@@ -56,17 +56,44 @@ public class Enemy : MonoBehaviour
         boatLevel3.SetActive(false);
         cannons.SetActive(false);
 
-        randHealth = Random.Range(0, 4);
-        randAttack = Random.Range(0, 3);
+        //Random stats based on booty
+        if (var.booty <= 3000)
+        {
+            randHealth = Random.Range(0, 2);
+            randAttack = Random.Range(0, 1);
+        }
 
-        while (randHealth == 0 && randAttack == 2)
+        if (var.booty <= 6000 && var.booty > 3000)
+        {
+            randHealth = Random.Range(0, 3);
+            randAttack = Random.Range(0, 2);
+        }
+
+        if (var.booty <= 9000 && var.booty > 6000)
+        {
+            randHealth = Random.Range(0, 3);
+            randAttack = Random.Range(0, 2);
+        }
+
+        if (var.booty <= 12000 && var.booty > 9000)
         {
             randHealth = Random.Range(0, 4);
             randAttack = Random.Range(0, 3);
         }
 
+        if (randHealth == 0)
+        {
+            randAttack = 0;
+        }
 
-        //Health randomizer
+        //while (randHealth == 0 && randAttack == 2)
+        //{
+        //    randHealth = Random.Range(0, 4);
+        //    randAttack = Random.Range(0, 3);
+        //}
+
+
+        //Set Models
         if (randHealth == 0)
         {
             boatLevel0.SetActive(true);
@@ -78,7 +105,7 @@ public class Enemy : MonoBehaviour
         if (randHealth == 1)
         {
             boatLevel1.SetActive(true);
-            health = 30;
+            health = 20;
         }
 
         if (randHealth == 2)
@@ -91,17 +118,6 @@ public class Enemy : MonoBehaviour
         {
             boatLevel3.SetActive(true);
             health = 100;
-        }
-
-        //Attack randomizer
-        if (randAttack == 0)
-        {
-
-        }
-
-        if (randAttack == 1)
-        {
-
         }
 
         if (randAttack == 2)

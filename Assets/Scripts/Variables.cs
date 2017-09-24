@@ -19,7 +19,7 @@ public class Variables : MonoBehaviour {
     //Utility
     public int speed = 0;
     public int turnSpeed = 0;
-    public float fireRate = 0.0f;
+    public float fireRate = 0f;
 
     //Enemy
     public int enemySpeed = 0;

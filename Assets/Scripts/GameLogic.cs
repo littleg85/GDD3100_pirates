@@ -21,6 +21,9 @@ public class GameLogic : MonoBehaviour {
         //Instructions 
         inst = GameObject.Find("Instructions Canvas").GetComponent<Canvas>();
         inst.enabled = false;
+
+        //Add 1000 booty
+        var.booty += 1000;
     }
 	
 	// Update is called once per frame
@@ -53,7 +56,6 @@ public class GameLogic : MonoBehaviour {
     IEnumerator GameWin()
     {
         yield return new WaitForSeconds(4.0f);
-        var.booty = 10000;
-        SceneManager.LoadScene("menu"); //Restart game after 4 seconds.
+        SceneManager.LoadScene("Upgrades");
     }
 }

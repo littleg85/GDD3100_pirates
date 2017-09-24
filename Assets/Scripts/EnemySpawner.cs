@@ -20,27 +20,28 @@ public class EnemySpawner : MonoBehaviour {
     void Start () {
         var = GameObject.Find("Variables").GetComponent<Variables>();
 
-        if (var.difficulty == 0)
+
+        for (int i = 0; i <= var.booty; i += 1000)
         {
-            SpawnEnemy0();
-        }
-        if (var.difficulty == 1)
-        {
-            SpawnEnemy0();
-            SpawnEnemy1();
-        }
-        if (var.difficulty == 2)
-        {
-            SpawnEnemy0();
-            SpawnEnemy1();
-            SpawnEnemy2();
-        }
-        if (var.difficulty == 3)
-        {
-            SpawnEnemy0();
-            SpawnEnemy1();
-            SpawnEnemy2();
-            SpawnEnemy3();
+            if (i <= 3000)
+            {
+                SpawnEnemyFront();
+            }
+
+            if (i <= 6000 && i > 3000)
+            {
+                SpawnEnemyLeft();
+            }
+
+            if (i <= 9000 && i > 6000)
+            {
+                SpawnEnemyRight();
+            }
+
+            if (i <= 12000 && i > 9000)
+            {
+                SpawnEnemyBack();
+            }
         }
     }
 	
@@ -49,51 +50,28 @@ public class EnemySpawner : MonoBehaviour {
 		
 	}
 
-    public void SpawnEnemy0()
+    public void SpawnEnemyFront()
     {
         Vector3 pos = centerFront + new Vector3(Random.Range(-sizeFront.x / 2, sizeFront.x / 2), Random.Range(-sizeFront.y / 2, sizeFront.y / 2), Random.Range(-sizeFront.z / 2, sizeFront.z / 2));
         Instantiate(enemy, pos, Quaternion.identity);
 
-        pos = centerFront + new Vector3(Random.Range(-sizeFront.x / 2, sizeFront.x / 2), Random.Range(-sizeFront.y / 2, sizeFront.y / 2), Random.Range(-sizeFront.z / 2, sizeFront.z / 2));
-        Instantiate(enemy, pos, Quaternion.identity);
-
-        pos = centerFront + new Vector3(Random.Range(-sizeFront.x / 2, sizeFront.x / 2), Random.Range(-sizeFront.y / 2, sizeFront.y / 2), Random.Range(-sizeFront.z / 2, sizeFront.z / 2));
-        Instantiate(enemy, pos, Quaternion.identity);
     }
 
-    public void SpawnEnemy1()
+    public void SpawnEnemyLeft()
     {
         Vector3 pos = centerLeft + new Vector3(Random.Range(-sizeLeft.x / 2, sizeLeft.x / 2), Random.Range(-sizeLeft.y / 2, sizeLeft.y / 2), Random.Range(-sizeLeft.z / 2, sizeLeft.z / 2));
         Instantiate(enemy, pos, Quaternion.identity);
-
-        pos = centerLeft+ new Vector3(Random.Range(-sizeLeft.x / 2, sizeLeft.x / 2), Random.Range(-sizeLeft.y / 2, sizeLeft.y / 2), Random.Range(-sizeLeft.z / 2, sizeLeft.z / 2));
-        Instantiate(enemy, pos, Quaternion.identity);
-
-        pos = centerLeft + new Vector3(Random.Range(-sizeLeft.x / 2, sizeLeft.x / 2), Random.Range(-sizeLeft.y / 2, sizeLeft.y / 2), Random.Range(-sizeLeft.z / 2, sizeLeft.z / 2));
-        Instantiate(enemy, pos, Quaternion.identity);
     }
 
-    public void SpawnEnemy2()
+    public void SpawnEnemyRight()
     {
         Vector3 pos = centerRight + new Vector3(Random.Range(-sizeRight.x / 2, sizeRight.x / 2), Random.Range(-sizeRight.y / 2, sizeRight.y / 2), Random.Range(-sizeRight.z / 2, sizeRight.z / 2));
         Instantiate(enemy, pos, Quaternion.identity);
-
-        pos = centerRight + new Vector3(Random.Range(-sizeRight.x / 2, sizeRight.x / 2), Random.Range(-sizeRight.y / 2, sizeRight.y / 2), Random.Range(-sizeRight.z / 2, sizeRight.z / 2));
-        Instantiate(enemy, pos, Quaternion.identity);
-
-        pos = centerRight + new Vector3(Random.Range(-sizeRight.x / 2, sizeRight.x / 2), Random.Range(-sizeRight.y / 2, sizeRight.y / 2), Random.Range(-sizeRight.z / 2, sizeRight.z / 2));
-        Instantiate(enemy, pos, Quaternion.identity);
     }
 
-    public void SpawnEnemy3()
+    public void SpawnEnemyBack()
     {
         Vector3 pos = centerBack + new Vector3(Random.Range(-sizeBack.x / 2, sizeBack.x / 2), Random.Range(-sizeBack.y / 2, sizeBack.y / 2), Random.Range(-sizeBack.z / 2, sizeBack.z / 2));
-        Instantiate(enemy, pos, Quaternion.identity);
-
-        pos = centerBack + new Vector3(Random.Range(-sizeBack.x / 2, sizeBack.x / 2), Random.Range(-sizeBack.y / 2, sizeBack.y / 2), Random.Range(-sizeBack.z / 2, sizeBack.z / 2));
-        Instantiate(enemy, pos, Quaternion.identity);
-
-        pos = centerBack + new Vector3(Random.Range(-sizeBack.x / 2, sizeBack.x / 2), Random.Range(-sizeBack.y / 2, sizeBack.y / 2), Random.Range(-sizeBack.z / 2, sizeBack.z / 2));
         Instantiate(enemy, pos, Quaternion.identity);
     }
 

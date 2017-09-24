@@ -11,6 +11,13 @@ public class Player : MonoBehaviour {
     public GameObject shadow;
     public bool capsize = false;
 
+    //Boats
+    public GameObject boat0;
+    public GameObject boat1;
+    public GameObject boat2;
+    public GameObject boat3;
+    public GameObject cannons;
+
     //Weapons
     public GameObject rockPrefab;
     public GameObject bulletPrefab;
@@ -35,42 +42,42 @@ public class Player : MonoBehaviour {
         gameLogic = GameObject.Find("GameUI").GetComponent<GameLogic>();
 
         //Hide children
-        transform.GetChild(0).gameObject.SetActive(false);
-        transform.GetChild(1).gameObject.SetActive(false);
-        transform.GetChild(2).gameObject.SetActive(false);
-        transform.GetChild(3).gameObject.SetActive(false);
+        boat0.SetActive(false);
+        boat1.SetActive(false);
+        boat2.SetActive(false);
+        boat3.SetActive(false);
+        cannons.SetActive(false);
 
+        //Set Models
         //Health
         if (var.healthLevel == 0)
         {
-            health = 20;
-            transform.GetChild(0).gameObject.SetActive(true);
+            health = 10;
+            boat0.SetActive(true);
         }
 
         if (var.healthLevel == 1)
         {
-            health = 50;
-            transform.GetChild(1).gameObject.SetActive(true);
+            health = 20;
+            boat1.SetActive(true);
         }
 
         if (var.healthLevel == 2)
         {
+            health = 50;
+            boat2.SetActive(true);
+        }
+
+        if (var.healthLevel == 3)
+        {
             health = 100;
-            transform.GetChild(2).gameObject.SetActive(true);
+            boat3.SetActive(true);
         }
 
         //Attack
-        if (var.attackLevel == 0)
+        if (var.attackLevel == 2 || var.attackLevel == 3)
         {
-        }
-
-        if (var.attackLevel == 1)
-        {
-        }
-
-        if (var.attackLevel == 2)
-        {
-            transform.GetChild(3).gameObject.SetActive(true);
+            cannons.SetActive(true);
         }
 
     }
@@ -182,7 +189,7 @@ public class Player : MonoBehaviour {
                 }
 
                 //Cannons
-                if (var.attackLevel == 2)
+                if (var.attackLevel == 2 || var.attackLevel == 3)
                 {
                     //Left cannon
                     if (Camera.main.transform.localRotation.eulerAngles.y > 180 && Camera.main.transform.localRotation.eulerAngles.y <= 315)
@@ -231,8 +238,6 @@ public class Player : MonoBehaviour {
                         Rigidbody cannonballFrontrb = cannonballFront.GetComponent<Rigidbody>();
                         cannonballFrontrb.AddForce(transform.forward * 500f, ForceMode.Impulse);
                     }
-
-
                 }
 
                 nextFire = Time.time + var.fireRate;
@@ -240,7 +245,7 @@ public class Player : MonoBehaviour {
 
             if (Input.GetMouseButton(1) && Time.time > nextFire)
             {
-                if (var.attackLevel == 2)
+                if (var.attackLevel == 3)
                 {
                     GameObject bullet1 = Instantiate(bulletPrefab, GameObject.Find("playerGuns").transform.position, transform.rotation);
                     bullet1.tag = "Player Bullet";
@@ -299,15 +304,13 @@ public class Player : MonoBehaviour {
     IEnumerator Capsize()
     {
         yield return new WaitForSeconds(5.0f);
-        var.booty = 10000;
-        SceneManager.LoadScene("menu"); //Restart game after 3 seconds.
+        SceneManager.LoadScene("Upgrades");
     }
 
     IEnumerator Sunk()
     {
         yield return new WaitForSeconds(5.0f);
-        var.booty = 10000;
-        SceneManager.LoadScene("menu"); //Restart game after 3 seconds.
+        SceneManager.LoadScene("Upgrades");
     }
 
     private void OnTriggerEnter(Collider other)
