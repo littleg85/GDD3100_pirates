@@ -3,19 +3,31 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class UpgradeText : MonoBehaviour {
+public class UpgradeText : MonoBehaviour
+{
 
-    //private Variables var;
+    private Variables var;
+    private GameObject bootyAvail;
+    public GameObject towerFrame;
+    public GameObject boatFrame;
     //private UpgradeUI menuUI;
 
-	// Use this for initialization
-	void Start () {
-        //var = GameObject.Find("Variables").GetComponent<Variables>();
+    // Use this for initialization
+    void Start()
+    {
+        var = GameObject.Find("Variables").GetComponent<Variables>();
+        bootyAvail = GameObject.Find("BootyAvail");
         //menuUI = GameObject.Find("MenuUI").GetComponent<UpgradeUI>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (towerFrame.activeSelf == true || boatFrame.activeSelf == true)
+        {
+            bootyAvail.GetComponent<Text>().text = "Booty: " + var.booty;
+        }
+
 
         ////Health 
         //if (gameObject.transform.name == "Health")

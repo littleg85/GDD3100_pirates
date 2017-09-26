@@ -21,11 +21,15 @@ public class Variables : MonoBehaviour {
     public int tSpeedLevel = 0;
     public int aSpeedLevel = 0;
 
+    //Towers
+    public int NElevel = 0;
+    public int NWlevel = 0;
+    public int Slevel = 0;
+    public int Elevel = 0;
+    public int SWlevel = 0;
+
     //Enemy
     public float enemySpeed = 0;
-
-    //Stage
-    public int difficulty = 0;
 
     // Use this for initialization
 
