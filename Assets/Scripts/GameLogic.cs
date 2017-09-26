@@ -13,7 +13,6 @@ public class GameLogic : MonoBehaviour {
     private Canvas inst;
     private bool instOn = false;
 
-    // Use this for initialization
     void Start()
     {
         var = GameObject.Find("Variables").GetComponent<Variables>();

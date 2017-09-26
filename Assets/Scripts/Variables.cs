@@ -17,12 +17,12 @@ public class Variables : MonoBehaviour {
     //Health
     public int healthLevel = 0;
     //Utility
-    public int speed = 0;
-    public int turnSpeed = 0;
-    public float fireRate = 0f;
+    public int speedLevel = 0;
+    public int tSpeedLevel = 0;
+    public int aSpeedLevel = 0;
 
     //Enemy
-    public int enemySpeed = 0;
+    public float enemySpeed = 0;
 
     //Stage
     public int difficulty = 0;
@@ -32,17 +32,5 @@ public class Variables : MonoBehaviour {
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
-    }
-
-    void Start()
-    {
-        //Cursor.visible = false;
-        //Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

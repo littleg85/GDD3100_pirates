@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     private Variables var;
     public GameObject booty;
 
+    //Difficiculty
+    private EnemySpawner spawner;
+
     //Weapons
     public GameObject rockPrefab;
     public GameObject bulletPrefab;
@@ -40,6 +43,7 @@ public class Enemy : MonoBehaviour
     private int randAttack;
     private BoxCollider boxCollider;
 
+    public Vector3 target;
 
     // Use this for initialization
     void Start()
@@ -48,6 +52,8 @@ public class Enemy : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
         var = GameObject.Find("Variables").GetComponent<Variables>();
+        spawner = GameObject.Find("GameUI").GetComponent<EnemySpawner>();
+        booty = GameObject.Find("Booty");
 
         //Hide children
         boatLevel0.SetActive(false);
@@ -57,49 +63,37 @@ public class Enemy : MonoBehaviour
         cannons.SetActive(false);
 
         //Random stats based on booty
-        if (var.booty <= 3000)
+        if (spawner.difficulty <= 4)
         {
             randHealth = Random.Range(0, 2);
             randAttack = Random.Range(0, 1);
         }
 
-        if (var.booty <= 6000 && var.booty > 3000)
+        if (spawner.difficulty <= 8 && spawner.difficulty > 4)
         {
             randHealth = Random.Range(0, 3);
             randAttack = Random.Range(0, 2);
         }
 
-        if (var.booty <= 9000 && var.booty > 6000)
+        if (spawner.difficulty <= 12 && spawner.difficulty > 8)
         {
-            randHealth = Random.Range(0, 3);
-            randAttack = Random.Range(0, 2);
+            randHealth = Random.Range(1, 3);
+            randAttack = Random.Range(1, 2);
         }
 
-        if (var.booty <= 12000 && var.booty > 9000)
+        if (spawner.difficulty <= 16 && spawner.difficulty > 12)
         {
-            randHealth = Random.Range(0, 4);
-            randAttack = Random.Range(0, 3);
+            randHealth = Random.Range(1, 4);
+            randAttack = Random.Range(1, 3);
         }
-
-        if (randHealth == 0)
-        {
-            randAttack = 0;
-        }
-
-        //while (randHealth == 0 && randAttack == 2)
-        //{
-        //    randHealth = Random.Range(0, 4);
-        //    randAttack = Random.Range(0, 3);
-        //}
-
 
         //Set Models
         if (randHealth == 0)
         {
             boatLevel0.SetActive(true);
             health = 10;
-            boxCollider.center = new Vector3(0, 2, 0);
-            boxCollider.size = new Vector3(2, 3, 4);
+           // boxCollider.center = new Vector3(0, 2, 0);
+           // boxCollider.size = new Vector3(2, 3, 4);
         }
 
         if (randHealth == 1)
@@ -129,9 +123,8 @@ public class Enemy : MonoBehaviour
 
     }
 
-
     // Update is called once per frame
-    void Update () {
+    void FixedUpdate () {
 
         dist = Vector3.Distance(GameObject.Find("Player").transform.position, transform.position);
 
@@ -139,7 +132,8 @@ public class Enemy : MonoBehaviour
         {
             //Move toward island
             transform.LookAt(booty.transform);
-            rb.AddForce(transform.forward * var.enemySpeed * Time.deltaTime, ForceMode.Impulse);
+            //rb.velocity = transform.forward * var.enemySpeed;
+            rb.AddForce(transform.forward * var.enemySpeed, ForceMode.VelocityChange);
 
             //Attack
             if (randAttack == 0 && Time.time > nextFire && dist <= 25f)
@@ -243,8 +237,28 @@ public class Enemy : MonoBehaviour
                 sinkPlayed = true;
             }
 
-            if (transform.position.y <= -10)
+            if (transform.position.y <= -30)
             {
+                if (randHealth == 0)
+                {
+                    var.booty += 100;
+                }
+
+                if (randHealth == 1)
+                {
+                    var.booty += 200;
+                }
+
+                if (randHealth == 2)
+                {
+                    var.booty += 300;
+                }
+
+                if (randHealth == 3)
+                {
+                    var.booty += 500;
+                }
+
                 Destroy(gameObject);
             }
         }

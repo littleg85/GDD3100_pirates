@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class UpgradeText : MonoBehaviour {
 
-    private Variables var;
-    private UpgradeUI menuUI;
+    //private Variables var;
+    //private UpgradeUI menuUI;
 
 	// Use this for initialization
 	void Start () {
-        var = GameObject.Find("Variables").GetComponent<Variables>();
-        menuUI = GameObject.Find("MenuUI").GetComponent<UpgradeUI>();
+        //var = GameObject.Find("Variables").GetComponent<Variables>();
+        //menuUI = GameObject.Find("MenuUI").GetComponent<UpgradeUI>();
     }
 	
 	// Update is called once per frame

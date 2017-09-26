@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 114235865544889264}
   - component: {fileID: 114750257589438746}
   - component: {fileID: 114843066128421710}
+  - component: {fileID: 114486599592146274}
   - component: {fileID: 82193242028156290}
   - component: {fileID: 82167296808153178}
   - component: {fileID: 82168074385123484}
@@ -1062,6 +1063,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846dfa3595a169a4296fc0cf7d5e490a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114486599592146274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1627679545464542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492392c310a924d4291d26c3c333296b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markerSprite: {fileID: 21300000, guid: afb023e63c5f1b646a83ad530fad2a0e, type: 3}
+  markerSize: 10
+  isActive: 1
 --- !u!114 &114750257589438746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1105,6 +1120,7 @@ MonoBehaviour:
   boatLevel2: {fileID: 1945685909574214}
   boatLevel3: {fileID: 1360282383481088}
   cannons: {fileID: 1108369768776294}
+  target: {x: 0, y: 0, z: 0}
 --- !u!114 &114908814740482306
 MonoBehaviour:
   m_ObjectHideFlags: 1

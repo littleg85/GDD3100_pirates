@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class TitleUI : MonoBehaviour {
 
+    private Variables var;
+
     // Use this for initialization
     void Start() {
+
+        var = GameObject.Find("Variables").GetComponent<Variables>();
 
     }
 
@@ -15,9 +20,14 @@ public class TitleUI : MonoBehaviour {
 
     }
 
-    public void PlayGame()
+    public void Play()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void Upgrades()
+    {
+        SceneManager.LoadScene("Upgrades");
     }
 
     public void Instructions()
@@ -28,5 +38,16 @@ public class TitleUI : MonoBehaviour {
     public void Credits()
     {
         SceneManager.LoadScene("Credits");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
+    public void SetBooty(string newText)
+    {
+        int temp = int.Parse(newText);
+        var.booty = temp;
     }
 }

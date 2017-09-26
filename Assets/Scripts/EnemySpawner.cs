@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : MonoBehaviour
+{
 
     public GameObject enemy;
     public Vector3 centerFront;
@@ -16,12 +17,18 @@ public class EnemySpawner : MonoBehaviour {
 
     private Variables var;
 
+    //Difficulty
+    public int difficulty;
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
+
         var = GameObject.Find("Variables").GetComponent<Variables>();
+        difficulty = var.attackLevel + var.healthLevel + var.speedLevel + var.aSpeedLevel + var.tSpeedLevel;
 
-
-        for (int i = 0; i <= var.booty; i += 1000)
+        //Spawn 1 enemy for every 1000 booty starting at 0
+        for (int i = 0; i < var.booty; i += 1000)
         {
             if (i <= 3000)
             {
@@ -43,12 +50,37 @@ public class EnemySpawner : MonoBehaviour {
                 SpawnEnemyBack();
             }
         }
+
+        //Spawn 1 enemy for every 2 difficulty levels
+        for (int j = 0; j < difficulty; j += 2)
+        {
+            if (j <= 4 && j > 1)
+            {
+                SpawnEnemyFront();
+            }
+
+            if (j <= 8 && j > 4)
+            {
+                SpawnEnemyLeft();
+            }
+
+            if (j <= 12 && j > 8)
+            {
+                SpawnEnemyRight();
+            }
+
+            if (j <= 16 && j > 12)
+            {
+                SpawnEnemyRight();
+            }
+        }
+
+        //Spawn more as you upgrade
+        if (var.healthLevel >= 2)
+        {
+            SpawnEnemyFront();
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void SpawnEnemyFront()
     {

@@ -12,7 +12,7 @@ public class Credits : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        transform.Translate(Vector3.up * Input.GetAxis("Mouse ScrollWheel") * 20000f * Time.deltaTime);
+        transform.Translate(-Vector3.up * Input.GetAxis("Mouse ScrollWheel") * 20000f * Time.deltaTime);
 
 	}
 }

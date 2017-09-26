@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
 
     private GameLogic gameLogic;
     private Rigidbody rb;
@@ -27,6 +28,15 @@ public class Player : MonoBehaviour {
     //Health
     public int health;
 
+    //Speed
+    private int speed;
+
+    //Attack Speed
+    private float fireRate;
+
+    //Turn Speed
+    private int tSpeed;
+
     //Audio
     public AudioSource damage;
     public AudioSource deadMen;
@@ -35,7 +45,8 @@ public class Player : MonoBehaviour {
     private bool winPlayed = false;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
         rb = GetComponent<Rigidbody>();
         var = GameObject.Find("Variables").GetComponent<Variables>();
@@ -80,10 +91,64 @@ public class Player : MonoBehaviour {
             cannons.SetActive(true);
         }
 
+        //Speed
+        if (var.speedLevel == 0)
+        {
+            speed = 30000;
+        }
+        if (var.speedLevel == 1)
+        {
+            speed = 40000;
+        }
+        if (var.speedLevel == 2)
+        {
+            speed = 60000;
+        }
+        if (var.speedLevel == 3)
+        {
+            speed = 80000;
+        }
+
+        //Attack SPeed
+        if (var.aSpeedLevel == 0)
+        {
+            fireRate = 2f;
+        }
+        if (var.aSpeedLevel == 1)
+        {
+            fireRate = 1.5f;
+        }
+        if (var.aSpeedLevel == 2)
+        {
+            fireRate = 1f;
+        }
+        if (var.aSpeedLevel == 3)
+        {
+            fireRate = .5f;
+        }
+
+        //Turn Speed
+        if (var.tSpeedLevel == 0)
+        {
+            tSpeed = 30;
+        }
+        if (var.tSpeedLevel == 1)
+        {
+            tSpeed = 50;
+        }
+        if (var.tSpeedLevel == 2)
+        {
+            tSpeed = 75;
+        }
+        if (var.tSpeedLevel == 3)
+        {
+            tSpeed = 100;
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         //Hide cursor
         Cursor.visible = false;
@@ -91,27 +156,14 @@ public class Player : MonoBehaviour {
 
         if (health > 0 && !capsize)
         {
-            //Movement
-            if (Input.GetKey(KeyCode.W))
-            {
-                //rb.velocity += transform.forward * var.speed;
-                rb.AddForce(transform.forward * var.speed * Time.deltaTime, ForceMode.Impulse);
-            }
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                //rb.velocity -= transform.forward * var.speed;
-                rb.AddForce(-transform.forward * var.speed * Time.deltaTime, ForceMode.Impulse);
-            }
-
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Rotate(-transform.up * var.turnSpeed * Time.deltaTime);
+                transform.Rotate(-transform.up * tSpeed * Time.deltaTime);
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                transform.Rotate(transform.up * var.turnSpeed * Time.deltaTime);
+                transform.Rotate(transform.up * tSpeed * Time.deltaTime);
             }
 
             //If boat is flipped, reset game.
@@ -150,11 +202,23 @@ public class Player : MonoBehaviour {
     }
 
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
 
-        if (health > 0)
+        if (health > 0 && !capsize)
         {
+            //Movement
+            if (Input.GetKey(KeyCode.W))
+            {
+                //rb.velocity += transform.forward * var.speed;
+                rb.AddForce(transform.forward * speed);
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                //rb.velocity -= transform.forward * var.speed;
+                rb.AddForce(-transform.forward * speed);
+            }
 
             //Projectiles
             if (Input.GetMouseButton(0) && Time.time > nextFire)
@@ -240,7 +304,7 @@ public class Player : MonoBehaviour {
                     }
                 }
 
-                nextFire = Time.time + var.fireRate;
+                nextFire = Time.time + fireRate;
             }
 
             if (Input.GetMouseButton(1) && Time.time > nextFire)
@@ -262,7 +326,7 @@ public class Player : MonoBehaviour {
                     Rigidbody bullet3rb = bullet3.GetComponent<Rigidbody>();
                     bullet3rb.AddForce((shadow.transform.forward - shadow.transform.right).normalized * 300f, ForceMode.Impulse);
 
-                    nextFire = Time.time + var.fireRate;
+                    nextFire = Time.time + fireRate;
                 }
             }
 

@@ -1337,8 +1337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 4276946466236842}
   distance: 20
-  xSpeed: 0.3
-  ySpeed: 3
+  xSpeed: 0.1
+  ySpeed: 2
   yMinLimit: 5
   yMaxLimit: 90
   distanceMin: 1

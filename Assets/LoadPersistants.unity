@@ -175,13 +175,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dac07cd1cba0b544a648bd6d30b5eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  booty: 15000
+  booty: 0
   attackLevel: 0
   healthLevel: 0
-  speed: 30000
-  turnSpeed: 30
-  fireRate: 2
-  enemySpeed: 80000
+  speedLevel: 0
+  tSpeedLevel: 0
+  aSpeedLevel: 0
+  enemySpeed: 0.075
   difficulty: 0
 --- !u!4 &968363912
 Transform:

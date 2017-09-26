@@ -7,7 +7,7 @@ public class LoadMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Title");
 	}
 	
 	// Update is called once per frame

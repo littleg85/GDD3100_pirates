@@ -9,7 +9,8 @@ public class UpgradeUI : MonoBehaviour
 {
 
     private Variables var;
-    private UpgradePers up;
+    public GameObject boatFrame;
+    public GameObject towerFrame;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class UpgradeUI : MonoBehaviour
 
     private void Update()
     {
-        //Set up buttons
+        //Keep upgrade buttons correct
         //Health column
         if (var.healthLevel == 1)
         {
@@ -74,13 +75,13 @@ public class UpgradeUI : MonoBehaviour
         }
 
         //Attack Speed column
-        if (var.fireRate == 1.5f)
+        if (var.aSpeedLevel == 1)
         {
             GameObject.Find("aSpeed1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("aSpeed1").GetComponent<Button>().interactable = false;
             GameObject.Find("aSpeed2").GetComponent<Button>().interactable = true;
         }
-        if (var.fireRate == 1f)
+        if (var.aSpeedLevel == 2)
         {
             GameObject.Find("aSpeed1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("aSpeed2").GetComponent<Button>().image.color = Color.green;
@@ -88,7 +89,7 @@ public class UpgradeUI : MonoBehaviour
             GameObject.Find("aSpeed2").GetComponent<Button>().interactable = false;
             GameObject.Find("aSpeed3").GetComponent<Button>().interactable = true;
         }
-        if (var.fireRate == 0.5f)
+        if (var.aSpeedLevel == 3)
         {
             GameObject.Find("aSpeed1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("aSpeed2").GetComponent<Button>().image.color = Color.green;
@@ -99,13 +100,13 @@ public class UpgradeUI : MonoBehaviour
         }
 
         //Speed column
-        if (var.speed == 40000)
+        if (var.speedLevel == 1)
         {
             GameObject.Find("pSpeed1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("pSpeed1").GetComponent<Button>().interactable = false;
             GameObject.Find("pSpeed2").GetComponent<Button>().interactable = true;
         }
-        if (var.speed == 60000)
+        if (var.speedLevel == 2)
         {
             GameObject.Find("pSpeed1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("pSpeed2").GetComponent<Button>().image.color = Color.green;
@@ -113,7 +114,7 @@ public class UpgradeUI : MonoBehaviour
             GameObject.Find("pSpeed2").GetComponent<Button>().interactable = false;
             GameObject.Find("pSpeed3").GetComponent<Button>().interactable = true;
         }
-        if (var.speed == 80000)
+        if (var.speedLevel == 3)
         {
             GameObject.Find("pSpeed1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("pSpeed2").GetComponent<Button>().image.color = Color.green;
@@ -124,13 +125,13 @@ public class UpgradeUI : MonoBehaviour
         }
 
         //Mobility column
-        if (var.turnSpeed == 50)
+        if (var.tSpeedLevel == 1)
         {
             GameObject.Find("Mob1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("Mob1").GetComponent<Button>().interactable = false;
             GameObject.Find("Mob2").GetComponent<Button>().interactable = true;
         }
-        if (var.turnSpeed == 75)
+        if (var.tSpeedLevel == 2)
         {
             GameObject.Find("Mob1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("Mob2").GetComponent<Button>().image.color = Color.green;
@@ -138,7 +139,7 @@ public class UpgradeUI : MonoBehaviour
             GameObject.Find("Mob2").GetComponent<Button>().interactable = false;
             GameObject.Find("Mob3").GetComponent<Button>().interactable = true;
         }
-        if (var.turnSpeed == 100)
+        if (var.tSpeedLevel == 3)
         {
             GameObject.Find("Mob1").GetComponent<Button>().image.color = Color.green;
             GameObject.Find("Mob2").GetComponent<Button>().image.color = Color.green;
@@ -146,6 +147,12 @@ public class UpgradeUI : MonoBehaviour
             GameObject.Find("Mob1").GetComponent<Button>().interactable = false;
             GameObject.Find("Mob2").GetComponent<Button>().interactable = false;
             GameObject.Find("Mob3").GetComponent<Button>().interactable = false;
+        }
+
+        //List available booty
+        if (gameObject.name == "BootyAvail")
+        {
+            gameObject.GetComponent<Text>().text = "Booty: " + var.booty;
         }
     }
 
@@ -165,7 +172,6 @@ public class UpgradeUI : MonoBehaviour
                 var.healthLevel = 1;
                 Debug.Log("Health Level 1");
                 var.booty -= 1000;
-                up.hp1 = true;
             }
             else
             {
@@ -261,7 +267,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 1000)
             {
-                var.fireRate = 1.5f;
+                var.aSpeedLevel = 1;
                 Debug.Log("Attack Speed Level 1");
                 var.booty -= 1000;
                 GameObject.Find("aSpeed1").GetComponent<Button>().image.color = Color.green;
@@ -278,7 +284,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 2000)
             {
-                var.fireRate = 1f;
+                var.aSpeedLevel = 2;
                 Debug.Log("Attack Speed Level 2");
                 var.booty -= 2000;
                 GameObject.Find("aSpeed2").GetComponent<Button>().image.color = Color.green;
@@ -295,7 +301,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 3000)
             {
-                var.fireRate = 0.5f;
+                var.aSpeedLevel = 3;
                 Debug.Log("Attack Speed Level 3");
                 var.booty -= 3000;
                 GameObject.Find("aSpeed3").GetComponent<Button>().image.color = Color.green;
@@ -314,7 +320,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 1000)
             {
-                var.speed = 40000;
+                var.speedLevel = 1;
                 Debug.Log("Speed Level 1");
                 var.booty -= 1000;
                 GameObject.Find("pSpeed1").GetComponent<Button>().image.color = Color.green;
@@ -331,7 +337,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 2000)
             {
-                var.speed = 60000;
+                var.speedLevel = 2;
                 Debug.Log("Speed Level 2");
                 var.booty -= 2000;
                 GameObject.Find("pSpeed2").GetComponent<Button>().image.color = Color.green;
@@ -348,7 +354,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 3000)
             {
-                var.speed = 80000;
+                var.speedLevel = 3;
                 Debug.Log("Speed Level 3");
                 var.booty -= 3000;
                 GameObject.Find("pSpeed3").GetComponent<Button>().image.color = Color.green;
@@ -367,7 +373,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 1000)
             {
-                var.turnSpeed = 50;
+                var.tSpeedLevel = 1;
                 Debug.Log("Mobility Level 1");
                 var.booty -= 1000;
                 GameObject.Find("Mob1").GetComponent<Button>().image.color = Color.green;
@@ -385,7 +391,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 2000)
             {
-                var.turnSpeed = 75;
+                var.tSpeedLevel = 2;
                 Debug.Log("Mobility Level 2");
                 var.booty -= 2000;
                 GameObject.Find("Mob2").GetComponent<Button>().image.color = Color.green;
@@ -402,7 +408,7 @@ public class UpgradeUI : MonoBehaviour
         {
             if (var.booty >= 3000)
             {
-                var.turnSpeed = 100;
+                var.tSpeedLevel = 3;
                 Debug.Log("Mobility Level 3");
                 var.booty -= 3000;
                 GameObject.Find("Mob3").GetComponent<Button>().image.color = Color.green;
@@ -413,6 +419,35 @@ public class UpgradeUI : MonoBehaviour
                 Debug.Log("Not enough booty");
             }
         }
+    }
+
+    public void TowerDropDown()
+    {
+        towerFrame.SetActive(true);
+        GameObject.Find("Cost").GetComponent<Text>().enabled = true;
+    }
+
+    public void TowerGoBack()
+    {
+        towerFrame.SetActive(false);
+        GameObject.Find("Cost").GetComponent<Text>().enabled = false;
+    }
+
+    public void BoatDropDown()
+    {
+        boatFrame.SetActive(true);
+        GameObject.Find("Cost").GetComponent<Text>().enabled = true;
+    }
+
+    public void BoatGoBack()
+    {
+        boatFrame.SetActive(false);
+        GameObject.Find("Cost").GetComponent<Text>().enabled = false;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Title");
     }
 
     public void Difficulty()
