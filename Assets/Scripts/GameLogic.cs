@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameLogic : MonoBehaviour {
 
     private Variables var;
-    private GameObject[] enemies;
+    public GameObject[] enemies;
     public bool gameWon = false;
 
     //Instructions
