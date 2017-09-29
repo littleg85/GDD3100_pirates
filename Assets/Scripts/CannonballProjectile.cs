@@ -33,14 +33,14 @@ public class CannonballProjectile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && gameObject.tag == "Player")
+        if (other.gameObject.tag == "Enemy" && gameObject.tag == "Player Cannonball")
         {
             collide.isTrigger = false;
             rb.detectCollisions = false;
             Destroy(gameObject, sound.clip.length);
         }
 
-        if (other.gameObject.tag == "Player" && gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Player" && gameObject.tag == "Enemy Cannonball")
         {
             collide.isTrigger = false;
             rb.detectCollisions = false;

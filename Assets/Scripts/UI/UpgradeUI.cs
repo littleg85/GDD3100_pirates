@@ -294,7 +294,7 @@ public class UpgradeUI : MonoBehaviour
 
     private void Update()
     {
-        //List available booty
+        //Store what is clicked on in the event system
         current = EventSystem.current.currentSelectedGameObject;
     }
 

@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
 
     //Health
     private int health = 100;
+    public bool dead = false;
 
     //Audio
     public AudioSource damage;
@@ -230,6 +231,7 @@ public class Enemy : MonoBehaviour
             rb.detectCollisions = false;
             boxCollider.enabled = false;
             GetComponent<FloatingGameEntityRealist>().enabled = false;
+            dead = true;
 
             if (!sinkPlayed)
             {
@@ -282,6 +284,11 @@ public class Enemy : MonoBehaviour
         {
             health -= 20;
             damage.PlayOneShot(damage.clip);
+        }
+
+        if (other.gameObject.tag == "Tower Projectile")
+        {
+            health -= 20;
         }
     }
 

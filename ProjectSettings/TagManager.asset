@@ -14,6 +14,7 @@ TagManager:
   - Enemy Rock
   - Enemy Bullet
   - Enemy Cannonball
+  - Tower Projectile
   layers:
   - Default
   - TransparentFX

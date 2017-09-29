@@ -313,6 +313,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4950951734122756}
+  - component: {fileID: 114658049752035576}
   m_Layer: 0
   m_Name: Watchtower_prefab
   m_TagString: Untagged
@@ -1587,3 +1588,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114658049752035576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1788860048776448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdab10b7641f470488c5322eb4ff3f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower0: {fileID: 0}
+  tower1: {fileID: 0}
+  tower2: {fileID: 0}
+  closestEnemy: {fileID: 0}
+  projectile: {fileID: 0}

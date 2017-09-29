@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: fdab10b7641f470488c5322eb4ff3f1f
-timeCreated: 1506455906
+timeCreated: 1506678893
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tower0: {instanceID: 0}
+  - tower1: {instanceID: 0}
+  - tower2: {instanceID: 0}
+  - closestEnemy: {instanceID: 0}
+  - projectile: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
