@@ -181,8 +181,8 @@ MonoBehaviour:
   speedLevel: 0
   tSpeedLevel: 0
   aSpeedLevel: 0
+  levelArray: 
   enemySpeed: 0.075
-  difficulty: 0
 --- !u!4 &968363912
 Transform:
   m_ObjectHideFlags: 0

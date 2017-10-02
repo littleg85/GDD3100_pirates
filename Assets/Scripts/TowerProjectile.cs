@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class TowerProjectile : MonoBehaviour
 {
-
     private Rigidbody rb;
-    private Towers closest;
+    private Tower closest;
+    public int damage;
 
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        closest = GetComponentInParent<Towers>();
-
+        closest = GetComponentInParent<Tower>();
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.LookAt(closest.closestEnemy.transform.position);
-
+        damage = GetComponentInParent<Tower>().damage;
     }
 
     private void FixedUpdate()
@@ -31,6 +30,12 @@ public class TowerProjectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
+        {
+            other.GetComponent<Enemy>().health -= damage;
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.tag == "Booty")
         {
             Destroy(gameObject);
         }

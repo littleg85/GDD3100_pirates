@@ -156,12 +156,14 @@ public class Player : MonoBehaviour
 
         if (health > 0 && !capsize)
         {
-            if (Input.GetKey(KeyCode.A))
+            //Turn left
+            if (KeyBindingManager.GetKey(KeyAction.left))
             {
                 transform.Rotate(-transform.up * tSpeed * Time.deltaTime);
             }
 
-            if (Input.GetKey(KeyCode.D))
+            //Turn right
+            if (KeyBindingManager.GetKey(KeyAction.right))
             {
                 transform.Rotate(transform.up * tSpeed * Time.deltaTime);
             }
@@ -198,6 +200,8 @@ public class Player : MonoBehaviour
                 deadMen.Play();
                 deadMenPlayed = true;
             }
+
+            var.booty = 0;
         }
     }
 
@@ -208,20 +212,20 @@ public class Player : MonoBehaviour
         if (health > 0 && !capsize)
         {
             //Movement
-            if (Input.GetKey(KeyCode.W))
+            if (KeyBindingManager.GetKey(KeyAction.forward))
             {
                 //rb.velocity += transform.forward * var.speed;
                 rb.AddForce(transform.forward * speed);
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if (KeyBindingManager.GetKey(KeyAction.backward))
             {
                 //rb.velocity -= transform.forward * var.speed;
                 rb.AddForce(-transform.forward * speed);
             }
 
             //Projectiles
-            if (Input.GetMouseButton(0) && Time.time > nextFire)
+            if (KeyBindingManager.GetKey(KeyAction.attack1) && Time.time > nextFire)
             {
                 //Rock
                 if (var.attackLevel == 0)
@@ -307,7 +311,7 @@ public class Player : MonoBehaviour
                 nextFire = Time.time + fireRate;
             }
 
-            if (Input.GetMouseButton(1) && Time.time > nextFire)
+            if (KeyBindingManager.GetKey(KeyAction.attack2) && Time.time > nextFire)
             {
                 if (var.attackLevel == 3)
                 {
@@ -368,13 +372,13 @@ public class Player : MonoBehaviour
     IEnumerator Capsize()
     {
         yield return new WaitForSeconds(5.0f);
-        SceneManager.LoadScene("Upgrades");
+        SceneManager.LoadScene("Upgrades_v2");
     }
 
     IEnumerator Sunk()
     {
         yield return new WaitForSeconds(5.0f);
-        SceneManager.LoadScene("Upgrades");
+        SceneManager.LoadScene("Upgrades_v2");
     }
 
     private void OnTriggerEnter(Collider other)

@@ -27,7 +27,7 @@ public class TitleUI : MonoBehaviour {
 
     public void Upgrades()
     {
-        SceneManager.LoadScene("Upgrades");
+        SceneManager.LoadScene("Upgrades_v2");
     }
 
     public void Instructions()
@@ -43,6 +43,11 @@ public class TitleUI : MonoBehaviour {
     public void MainMenu()
     {
         SceneManager.LoadScene("Title");
+    }
+
+    public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
     }
 
     public void SetBooty(string newText)

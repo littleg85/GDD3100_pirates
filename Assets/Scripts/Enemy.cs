@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     private float dist;
 
     //Health
-    private int health = 100;
+    public int health = 100;
     public bool dead = false;
 
     //Audio
@@ -285,11 +285,6 @@ public class Enemy : MonoBehaviour
             health -= 20;
             damage.PlayOneShot(damage.clip);
         }
-
-        if (other.gameObject.tag == "Tower Projectile")
-        {
-            health -= 20;
-        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -304,7 +299,10 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Booty")
         {
-            var.booty -= 1;
+            if (var.booty > 0)
+            {
+                var.booty -= 1;
+            }
         }
     }
 }

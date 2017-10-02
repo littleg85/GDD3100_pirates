@@ -55,7 +55,7 @@ public class BulletProjectile : MonoBehaviour {
             Destroy(gameObject, sound.clip.length);
         }
 
-        if (other.gameObject.tag == "Bounds")
+        if (other.gameObject.tag == "Bounds" || other.gameObject.tag == "Booty")
         {
             Destroy(gameObject);
         }

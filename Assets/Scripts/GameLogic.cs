@@ -55,6 +55,6 @@ public class GameLogic : MonoBehaviour {
     IEnumerator GameWin()
     {
         yield return new WaitForSeconds(4.0f);
-        SceneManager.LoadScene("Upgrades");
+        SceneManager.LoadScene("Upgrades_v2");
     }
 }

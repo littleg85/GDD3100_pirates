@@ -22,19 +22,31 @@ public class Variables : MonoBehaviour {
     public int aSpeedLevel = 0;
 
     //Towers
-    public int NElevel = 0;
-    public int NWlevel = 0;
-    public int Slevel = 0;
-    public int Elevel = 0;
-    public int SWlevel = 0;
+    public int[] levelArray;
 
     //Enemy
     public float enemySpeed = 0;
+
 
     // Use this for initialization
 
     private void Awake()
     {
         DontDestroyOnLoad(transform.gameObject);
+
+        //Start tower levels at 0
+        levelArray = new int[5];
+        for (int i = 0; i < 5; i++)
+        {
+            levelArray[i] = 0;
+        }
+
+        //Set default keybinds
+        KeyBindingManager.keyDict.Add(KeyAction.forward, KeyCode.W);
+        KeyBindingManager.keyDict.Add(KeyAction.backward, KeyCode.S);
+        KeyBindingManager.keyDict.Add(KeyAction.left, KeyCode.A);
+        KeyBindingManager.keyDict.Add(KeyAction.right, KeyCode.D);
+        KeyBindingManager.keyDict.Add(KeyAction.attack1, KeyCode.Mouse0);
+        KeyBindingManager.keyDict.Add(KeyAction.attack2, KeyCode.Mouse1);
     }
 }

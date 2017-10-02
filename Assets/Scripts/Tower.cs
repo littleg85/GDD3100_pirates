@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class Towers : MonoBehaviour
+public class Tower : MonoBehaviour
 {
 
     public GameObject tower0;
@@ -19,10 +19,13 @@ public class Towers : MonoBehaviour
     private float fireRate = 2f;
     private float nextFire = 0.0f;
     private int range = 100;
+    public GameObject projSpawn;
+    public int damage;
 
     // Use this for initialization
     void Start()
     {
+
         var = GameObject.Find("Variables").GetComponent<Variables>();
         logic = GameObject.Find("GameUI").GetComponent<GameLogic>();
         closestEnemy = null;
@@ -36,81 +39,96 @@ public class Towers : MonoBehaviour
         //Set models
         if (gameObject.name == "NE")
         {
-            if (var.NElevel == 1)
+            if (var.levelArray[0] == 1)
             {
                 tower0.SetActive(true);
+                damage = 5;
             }
-            else if (var.NElevel == 2)
+            else if (var.levelArray[0] == 2)
             {
                 tower1.SetActive(true);
+                damage = 10;
             }
-            else if (var.NElevel == 3)
+            else if (var.levelArray[0] == 3)
             {
                 tower2.SetActive(true);
-            }
-        }
-
-        if (gameObject.name == "NW")
-        {
-            if (var.NWlevel == 1)
-            {
-                tower0.SetActive(true);
-            }
-            else if (var.NWlevel == 2)
-            {
-                tower1.SetActive(true);
-            }
-            else if (var.NWlevel == 3)
-            {
-                tower2.SetActive(true);
-            }
-        }
-
-        if (gameObject.name == "S")
-        {
-            if (var.Slevel == 1)
-            {
-                tower0.SetActive(true);
-            }
-            else if (var.Slevel == 2)
-            {
-                tower1.SetActive(true);
-            }
-            else if (var.Slevel == 3)
-            {
-                tower2.SetActive(true);
+                damage = 20;
             }
         }
 
         if (gameObject.name == "E")
         {
-            if (var.Elevel == 1)
+            if (var.levelArray[1] == 1)
             {
                 tower0.SetActive(true);
+                damage = 5;
             }
-            else if (var.Elevel == 2)
+            else if (var.levelArray[1] == 2)
             {
                 tower1.SetActive(true);
+                damage = 10;
             }
-            else if (var.Elevel == 3)
+            else if (var.levelArray[1] == 3)
             {
                 tower2.SetActive(true);
+                damage = 20;
+            }
+        }
+
+        if (gameObject.name == "S")
+        {
+            if (var.levelArray[2] == 1)
+            {
+                tower0.SetActive(true);
+                damage = 5;
+            }
+            else if (var.levelArray[2] == 2)
+            {
+                tower1.SetActive(true);
+                damage = 10;
+            }
+            else if (var.levelArray[2] == 3)
+            {
+                tower2.SetActive(true);
+                damage = 20;
             }
         }
 
         if (gameObject.name == "SW")
         {
-            if (var.SWlevel == 1)
+            if (var.levelArray[3] == 1)
             {
                 tower0.SetActive(true);
+                damage = 5;
             }
-            else if (var.SWlevel == 2)
+            else if (var.levelArray[3] == 2)
             {
                 tower1.SetActive(true);
+                damage = 10;
             }
-            else if (var.SWlevel == 3)
+            else if (var.levelArray[3] == 3)
             {
                 tower2.SetActive(true);
+                damage = 20;
+            }
+        }
+
+        if (gameObject.name == "NW")
+        {
+            if (var.levelArray[4] == 1)
+            {
+                tower0.SetActive(true);
+                damage = 5;
+            }
+            else if (var.levelArray[4] == 2)
+            {
+                tower1.SetActive(true);
+                damage = 10;
+            }
+            else if (var.levelArray[4] == 3)
+            {
+                tower2.SetActive(true);
+                damage = 20;
             }
         }
     }
@@ -148,7 +166,7 @@ public class Towers : MonoBehaviour
 
         if (dist <= range && Time.time > nextFire)
         {
-            GameObject proj = Instantiate(projectile, transform.position, Quaternion.identity);
+            GameObject proj = Instantiate(projectile, projSpawn.transform.position, Quaternion.identity);
             proj.transform.SetParent(gameObject.transform);
 
             nextFire = Time.time + fireRate;

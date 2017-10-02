@@ -14,6 +14,8 @@ public class UpgradeUI : MonoBehaviour
     private Text cost;
     private Text bootyAvail;
 
+    public Animator anim;
+
     private void Awake()
     {
         var = GameObject.Find("Variables").GetComponent<Variables>();
@@ -162,134 +164,134 @@ public class UpgradeUI : MonoBehaviour
         }
 
         //Towers
-        if (towerFrame.activeSelf == true)
-        {
-            //NE
-            if (var.NElevel == 1)
-            {
-                GameObject.Find("NE1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE1").GetComponent<Button>().interactable = false;
-                GameObject.Find("NE2").GetComponent<Button>().interactable = true;
-            }
-            if (var.NElevel == 2)
-            {
-                GameObject.Find("NE1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE1").GetComponent<Button>().interactable = false;
-                GameObject.Find("NE2").GetComponent<Button>().interactable = false;
-                GameObject.Find("NE3").GetComponent<Button>().interactable = true;
-            }
-            if (var.NElevel == 3)
-            {
-                GameObject.Find("NE1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE1").GetComponent<Button>().interactable = false;
-                GameObject.Find("NE2").GetComponent<Button>().interactable = false;
-                GameObject.Find("NE3").GetComponent<Button>().interactable = false;
-            }
+        //if (towerFrame.activeSelf == true)
+        //{
+        //    //NE
+        //    if (var.NElevel == 1)
+        //    {
+        //        GameObject.Find("NE1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NE1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NE2").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.NElevel == 2)
+        //    {
+        //        GameObject.Find("NE1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NE2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NE1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NE2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NE3").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.NElevel == 3)
+        //    {
+        //        GameObject.Find("NE1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NE2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NE3").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NE1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NE2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NE3").GetComponent<Button>().interactable = false;
+        //    }
 
-            //SW
-            if (var.SWlevel == 1)
-            {
-                GameObject.Find("SW1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW1").GetComponent<Button>().interactable = false;
-                GameObject.Find("SW2").GetComponent<Button>().interactable = true;
-            }
-            if (var.SWlevel == 2)
-            {
-                GameObject.Find("SW1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW1").GetComponent<Button>().interactable = false;
-                GameObject.Find("SW2").GetComponent<Button>().interactable = false;
-                GameObject.Find("SW3").GetComponent<Button>().interactable = true;
-            }
-            if (var.SWlevel == 3)
-            {
-                GameObject.Find("SW1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW1").GetComponent<Button>().interactable = false;
-                GameObject.Find("SW2").GetComponent<Button>().interactable = false;
-                GameObject.Find("SW3").GetComponent<Button>().interactable = false;
-            }
+        //    //SW
+        //    if (var.SWlevel == 1)
+        //    {
+        //        GameObject.Find("SW1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("SW1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("SW2").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.SWlevel == 2)
+        //    {
+        //        GameObject.Find("SW1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("SW2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("SW1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("SW2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("SW3").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.SWlevel == 3)
+        //    {
+        //        GameObject.Find("SW1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("SW2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("SW3").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("SW1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("SW2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("SW3").GetComponent<Button>().interactable = false;
+        //    }
 
-            //S
-            if (var.Slevel == 1)
-            {
-                GameObject.Find("S1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S1").GetComponent<Button>().interactable = false;
-                GameObject.Find("S2").GetComponent<Button>().interactable = true;
-            }
-            if (var.Slevel == 2)
-            {
-                GameObject.Find("S1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S1").GetComponent<Button>().interactable = false;
-                GameObject.Find("S2").GetComponent<Button>().interactable = false;
-                GameObject.Find("S3").GetComponent<Button>().interactable = true;
-            }
-            if (var.Slevel == 3)
-            {
-                GameObject.Find("S1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S1").GetComponent<Button>().interactable = false;
-                GameObject.Find("S2").GetComponent<Button>().interactable = false;
-                GameObject.Find("S3").GetComponent<Button>().interactable = false;
-            }
+        //    //S
+        //    if (var.Slevel == 1)
+        //    {
+        //        GameObject.Find("S1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("S1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("S2").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.Slevel == 2)
+        //    {
+        //        GameObject.Find("S1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("S2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("S1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("S2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("S3").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.Slevel == 3)
+        //    {
+        //        GameObject.Find("S1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("S2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("S3").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("S1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("S2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("S3").GetComponent<Button>().interactable = false;
+        //    }
 
-            //NW
-            if (var.NWlevel == 1)
-            {
-                GameObject.Find("NW1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW1").GetComponent<Button>().interactable = false;
-                GameObject.Find("NW2").GetComponent<Button>().interactable = true;
-            }
-            if (var.NWlevel == 2)
-            {
-                GameObject.Find("NW1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW1").GetComponent<Button>().interactable = false;
-                GameObject.Find("NW2").GetComponent<Button>().interactable = false;
-                GameObject.Find("NW3").GetComponent<Button>().interactable = true;
-            }
-            if (var.NWlevel == 3)
-            {
-                GameObject.Find("NW1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW1").GetComponent<Button>().interactable = false;
-                GameObject.Find("NW2").GetComponent<Button>().interactable = false;
-                GameObject.Find("NW3").GetComponent<Button>().interactable = false;
-            }
+        //    //NW
+        //    if (var.NWlevel == 1)
+        //    {
+        //        GameObject.Find("NW1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NW1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NW2").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.NWlevel == 2)
+        //    {
+        //        GameObject.Find("NW1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NW2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NW1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NW2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NW3").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.NWlevel == 3)
+        //    {
+        //        GameObject.Find("NW1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NW2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NW3").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("NW1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NW2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("NW3").GetComponent<Button>().interactable = false;
+        //    }
 
-            //E
-            if (var.Elevel == 1)
-            {
-                GameObject.Find("E1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E1").GetComponent<Button>().interactable = false;
-                GameObject.Find("E2").GetComponent<Button>().interactable = true;
-            }
-            if (var.Elevel == 2)
-            {
-                GameObject.Find("E1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E1").GetComponent<Button>().interactable = false;
-                GameObject.Find("E2").GetComponent<Button>().interactable = false;
-                GameObject.Find("E3").GetComponent<Button>().interactable = true;
-            }
-            if (var.Elevel == 3)
-            {
-                GameObject.Find("E1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E1").GetComponent<Button>().interactable = false;
-                GameObject.Find("E2").GetComponent<Button>().interactable = false;
-                GameObject.Find("E3").GetComponent<Button>().interactable = false;
-            }
-            towerFrame.SetActive(false);
-        }
+        //    //E
+        //    if (var.Elevel == 1)
+        //    {
+        //        GameObject.Find("E1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("E1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("E2").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.Elevel == 2)
+        //    {
+        //        GameObject.Find("E1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("E2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("E1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("E2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("E3").GetComponent<Button>().interactable = true;
+        //    }
+        //    if (var.Elevel == 3)
+        //    {
+        //        GameObject.Find("E1").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("E2").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("E3").GetComponent<Button>().image.color = Color.green;
+        //        GameObject.Find("E1").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("E2").GetComponent<Button>().interactable = false;
+        //        GameObject.Find("E3").GetComponent<Button>().interactable = false;
+        //    }
+        //    towerFrame.SetActive(false);
+        //}
     }
 
     private void Update()
@@ -301,6 +303,39 @@ public class UpgradeUI : MonoBehaviour
     public void OnStartGame()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void TowerDropDown()
+    {
+        towerFrame.SetActive(true);
+        cost.enabled = true;
+        bootyAvail.enabled = true;
+    }
+
+    public void TowerGoBack()
+    {
+        towerFrame.SetActive(false);
+        cost.enabled = false;
+        bootyAvail.enabled = false;
+    }
+
+    public void BoatDropDown()
+    {
+        boatFrame.SetActive(true);
+        cost.enabled = true;
+        bootyAvail.enabled = true;
+    }
+
+    public void BoatGoBack()
+    {
+        boatFrame.SetActive(false);
+        cost.enabled = false;
+        bootyAvail.enabled = false;
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Title");
     }
 
     public void BoatUpgrades()
@@ -544,216 +579,198 @@ public class UpgradeUI : MonoBehaviour
         }
     }
 
-    public void TowerDropDown()
-    {
-        towerFrame.SetActive(true);
-        cost.enabled = true;
-        bootyAvail.enabled = true;
-    }
-
-    public void TowerGoBack()
-    {
-        towerFrame.SetActive(false);
-        cost.enabled = false;
-        bootyAvail.enabled = false;
-    }
-
-    public void BoatDropDown()
-    {
-        boatFrame.SetActive(true);
-        cost.enabled = true;
-        bootyAvail.enabled = true;
-    }
-
-    public void BoatGoBack()
-    {
-        boatFrame.SetActive(false);
-        cost.enabled = false;
-        bootyAvail.enabled = false;
-    }
-
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("Title");
-    }
-
     //Towers
-    public void SetTower()
-    {
-        if (current.name == "NE1")
-        {
-            if (var.booty >= 3000)
-            {
-                var.NElevel = 1;
-                var.booty -= 3000;
-                GameObject.Find("NE1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE1").GetComponent<Button>().interactable = false;
-                GameObject.Find("NE2").GetComponent<Button>().interactable = true;
-            }
-        }
+    //public void SetTower()
+    //{
+    //    if (current.name == "NE1")
+    //    {
+    //        if (var.booty >= 3000)
+    //        {
+    //            var.NElevel = 1;
+    //            var.NEdamage = 5;
+    //            var.booty -= 3000;
+    //            GameObject.Find("NE1").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("NE1").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("NE2").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "NE2")
-        {
-            if (var.booty >= 5000)
-            {
-                var.NElevel = 2;
-                var.booty -= 5000;
-                GameObject.Find("NE2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE2").GetComponent<Button>().interactable = false;
-                GameObject.Find("NE3").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "NE2")
+    //    {
+    //        if (var.booty >= 5000)
+    //        {
+    //            var.NElevel = 2;
+    //            var.NEdamage = 10;
+    //            var.booty -= 5000;
+    //            GameObject.Find("NE2").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("NE2").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("NE3").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "NE3")
-        {
-            if (var.booty >= 7000)
-            {
-                var.NElevel = 3;
-                var.booty -= 7000;
-                GameObject.Find("NE3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NE3").GetComponent<Button>().interactable = false;
-            }
-        }
+    //    if (current.name == "NE3")
+    //    {
+    //        if (var.booty >= 7000)
+    //        {
+    //            var.NElevel = 3;
+    //            var.NEdamage = 20;
+    //            var.booty -= 7000;
+    //            GameObject.Find("NE3").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("NE3").GetComponent<Button>().interactable = false;
+    //        }
+    //    }
 
-        if (current.name == "NW1")
-        {
-            if (var.booty >= 3000)
-            {
-                var.NWlevel = 1;
-                var.booty -= 3000;
-                GameObject.Find("NW1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW1").GetComponent<Button>().interactable = false;
-                GameObject.Find("NW2").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "NW1")
+    //    {
+    //        if (var.booty >= 3000)
+    //        {
+    //            var.NWlevel = 1;
+    //            var.NWdamage = 5;
+    //            var.booty -= 3000;
+    //            GameObject.Find("NW1").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("NW1").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("NW2").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "NW2")
-        {
-            if (var.booty >= 5000)
-            {
-                var.NWlevel = 2;
-                var.booty -= 5000;
-                GameObject.Find("NW2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW2").GetComponent<Button>().interactable = false;
-                GameObject.Find("NW3").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "NW2")
+    //    {
+    //        if (var.booty >= 5000)
+    //        {
+    //            var.NWlevel = 2;
+    //            var.NWdamage = 10;
+    //            var.booty -= 5000;
+    //            GameObject.Find("NW2").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("NW2").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("NW3").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "NW3")
-        {
-            if (var.booty >= 7000)
-            {
-                var.NWlevel = 3;
-                var.booty -= 7000;
-                GameObject.Find("NW3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("NW3").GetComponent<Button>().interactable = false;
-            }
-        }
+    //    if (current.name == "NW3")
+    //    {
+    //        if (var.booty >= 7000)
+    //        {
+    //            var.NWlevel = 3;
+    //            var.NWdamage = 20;
+    //            var.booty -= 7000;
+    //            GameObject.Find("NW3").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("NW3").GetComponent<Button>().interactable = false;
+    //        }
+    //    }
 
-        if (current.name == "S1")
-        {
-            if (var.booty >= 3000)
-            {
-                var.Slevel = 1;
-                var.booty -= 3000;
-                GameObject.Find("S1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S1").GetComponent<Button>().interactable = false;
-                GameObject.Find("S2").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "S1")
+    //    {
+    //        if (var.booty >= 3000)
+    //        {
+    //            var.Slevel = 1;
+    //            var.Sdamage = 5;
+    //            var.booty -= 3000;
+    //            GameObject.Find("S1").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("S1").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("S2").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "S2")
-        {
-            if (var.booty >= 5000)
-            {
-                var.Slevel = 2;
-                var.booty -= 5000;
-                GameObject.Find("S2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S2").GetComponent<Button>().interactable = false;
-                GameObject.Find("S3").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "S2")
+    //    {
+    //        if (var.booty >= 5000)
+    //        {
+    //            var.Slevel = 2;
+    //            var.Sdamage = 10;
+    //            var.booty -= 5000;
+    //            GameObject.Find("S2").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("S2").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("S3").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "S3")
-        {
-            if (var.booty >= 7000)
-            {
-                var.Slevel = 3;
-                var.booty -= 7000;
-                GameObject.Find("S3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("S3").GetComponent<Button>().interactable = false;
-            }
-        }
+    //    if (current.name == "S3")
+    //    {
+    //        if (var.booty >= 7000)
+    //        {
+    //            var.Slevel = 3;
+    //            var.Sdamage = 20;
+    //            var.booty -= 7000;
+    //            GameObject.Find("S3").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("S3").GetComponent<Button>().interactable = false;
+    //        }
+    //    }
 
-        if (current.name == "SW1")
-        {
-            if (var.booty >= 3000)
-            {
-                var.booty -= 3000;
-                var.SWlevel = 1;
-                GameObject.Find("SW1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW1").GetComponent<Button>().interactable = false;
-                GameObject.Find("SW2").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "SW1")
+    //    {
+    //        if (var.booty >= 3000)
+    //        {
+    //            var.booty -= 3000;
+    //            var.SWdamage = 5;
+    //            var.SWlevel = 1;
+    //            GameObject.Find("SW1").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("SW1").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("SW2").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "SW2")
-        {
-            if (var.booty >= 5000)
-            {
-                var.booty -= 5000;
-                var.SWlevel = 2;
-                GameObject.Find("SW2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW2").GetComponent<Button>().interactable = false;
-                GameObject.Find("SW3").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "SW2")
+    //    {
+    //        if (var.booty >= 5000)
+    //        {
+    //            var.booty -= 5000;
+    //            var.SWdamage = 10;
+    //            var.SWlevel = 2;
+    //            GameObject.Find("SW2").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("SW2").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("SW3").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "SW3")
-        {
-            if (var.booty >= 7000)
-            {
-                var.booty -= 7000;
-                var.SWlevel = 3;
-                GameObject.Find("SW3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("SW3").GetComponent<Button>().interactable = false;
-            }
-        }
+    //    if (current.name == "SW3")
+    //    {
+    //        if (var.booty >= 7000)
+    //        {
+    //            var.booty -= 7000;
+    //            var.SWdamage = 20;
+    //            var.SWlevel = 3;
+    //            GameObject.Find("SW3").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("SW3").GetComponent<Button>().interactable = false;
+    //        }
+    //    }
 
-        if (current.name == "E1")
-        {
-            if (var.booty >= 3000)
-            {
-                var.booty -= 3000;
-                var.Elevel = 1;
-                GameObject.Find("E1").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E1").GetComponent<Button>().interactable = false;
-                GameObject.Find("E2").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "E1")
+    //    {
+    //        if (var.booty >= 3000)
+    //        {
+    //            var.booty -= 3000;
+    //            var.Edamage = 5;
+    //            var.Elevel = 1;
+    //            GameObject.Find("E1").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("E1").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("E2").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "E2")
-        {
-            if (var.booty >= 5000)
-            {
-                var.booty -= 5000;
-                var.Elevel = 2;
-                GameObject.Find("E2").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E2").GetComponent<Button>().interactable = false;
-                GameObject.Find("E3").GetComponent<Button>().interactable = true;
-            }
-        }
+    //    if (current.name == "E2")
+    //    {
+    //        if (var.booty >= 5000)
+    //        {
+    //            var.booty -= 5000;
+    //            var.Edamage = 10;
+    //            var.Elevel = 2;
+    //            GameObject.Find("E2").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("E2").GetComponent<Button>().interactable = false;
+    //            GameObject.Find("E3").GetComponent<Button>().interactable = true;
+    //        }
+    //    }
 
-        if (current.name == "E3")
-        {
-            if (var.booty >= 7000)
-            {
-                var.booty -= 7000;
-                var.Elevel = 3;
-                GameObject.Find("E3").GetComponent<Button>().image.color = Color.green;
-                GameObject.Find("E3").GetComponent<Button>().interactable = false;
-            }
-        }
-    }
+    //    if (current.name == "E3")
+    //    {
+    //        if (var.booty >= 7000)
+    //        {
+    //            var.booty -= 7000;
+    //            var.Edamage = 20;
+    //            var.Elevel = 3;
+    //            GameObject.Find("E3").GetComponent<Button>().image.color = Color.green;
+    //            GameObject.Find("E3").GetComponent<Button>().interactable = false;
+    //        }
+    //    }
+    //}
 }
 

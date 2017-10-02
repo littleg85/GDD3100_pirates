@@ -23,3 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Upgrades.unity
     guid: 2bf54d19a506573498fea37b15bbe5b1
+  - enabled: 1
+    path: Assets/Upgrades_v2.unity
+    guid: e9d98053c089a514abfbde180b7badab
+  - enabled: 1
+    path: Assets/Settings.unity
+    guid: 2f806d6c54ba0ea4798127017f507827
