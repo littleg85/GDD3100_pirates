@@ -8,16 +8,14 @@ using UnityEngine;
 public class UpgradeUI_v2 : MonoBehaviour
 {
     private Variables var;
-    public GameObject boatFrame;
-    public GameObject towerFrame;
-
 
     //Buttons
     public GameObject Play;
     public GameObject Menu;
     public GameObject towerButton;
     public GameObject boatButton;
-    public GameObject returnButton;
+    public GameObject returnBoat;
+    public GameObject returnTower;
     public GameObject boatButtons;
 
     private Text cost;
@@ -31,8 +29,7 @@ public class UpgradeUI_v2 : MonoBehaviour
     private void Awake()
     {
         var = GameObject.Find("Variables").GetComponent<Variables>();
-        cost = GameObject.Find("Cost").GetComponent<Text>();
-        bootyAvail = GameObject.Find("BootyAvail").GetComponent<Text>();
+        //bootyAvail = GameObject.Find("BootyAvail").GetComponent<Text>();
 
         //Show cursor
         Cursor.visible = true;
@@ -41,32 +38,41 @@ public class UpgradeUI_v2 : MonoBehaviour
 
     void Start()
     {
-        cost.enabled = false;
-        bootyAvail.enabled = false;
+        //bootyAvail.enabled = false;
     }
 
     private void Update()
     {
         //Store what is clicked on in the event system
-        if(var.healthLevel == 3)
+        if (var.healthLevel >= 3)
         {
             boatButtons.transform.GetChild(0).gameObject.GetComponent<Button>().interactable = false;
         }
-        if (var.attackLevel == 3)
+        if (var.attackLevel >= 3)
         {
             boatButtons.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
         }
-        if (var.aSpeedLevel == 3)
+        if (var.aSpeedLevel >= 3)
         {
             boatButtons.transform.GetChild(2).gameObject.GetComponent<Button>().interactable = false;
         }
-        if (var.speedLevel == 3)
+        if (var.speedLevel >= 3)
         {
             boatButtons.transform.GetChild(3).gameObject.GetComponent<Button>().interactable = false;
         }
-        if (var.tSpeedLevel == 3)
+        if (var.tSpeedLevel >= 3)
         {
             boatButtons.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = false;
+        }
+
+        //Don't let you get cannons at heal level 0
+        if (var.healthLevel < 1 && var.attackLevel == 1)
+        {
+            boatButtons.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        }
+        else if (var.attackLevel < 3)
+        {
+            boatButtons.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
         }
     }
 
@@ -104,8 +110,8 @@ public class UpgradeUI_v2 : MonoBehaviour
         {
             anim.Play("Path_Towers_Return");
         }
-        returnButton.SetActive(false);
-        returnButton.transform.localPosition = new Vector3(0, returnButton.transform.localPosition.y, returnButton.transform.localPosition.z);
+        returnTower.SetActive(false);
+        returnBoat.SetActive(false);
         highlight.SetActive(false);
         upgrade.SetActive(false);
         boatButtons.SetActive(false);
@@ -134,7 +140,7 @@ public class UpgradeUI_v2 : MonoBehaviour
             var.healthLevel++;
         }
     }
-    
+
     public void Attack()
     {
         if (var.attackLevel == 0 && var.booty >= 1000)
@@ -142,7 +148,7 @@ public class UpgradeUI_v2 : MonoBehaviour
             var.booty -= 1000;
             var.attackLevel++;
         }
-        else if (var.attackLevel == 1 && var.booty >= 2000)
+        else if (var.attackLevel == 1 && var.booty >= 2000 && var.healthLevel > 0)
         {
             var.booty -= 2000;
             var.attackLevel++;

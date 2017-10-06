@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private Rigidbody rb;
     private Variables var;
-    public GameObject booty;
+    private GameObject booty;
 
     //Difficiculty
     private EnemySpawner spawner;

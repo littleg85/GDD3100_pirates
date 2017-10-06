@@ -23,10 +23,7 @@ public class AnimationFinished : StateMachineBehaviour {
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("Path_Boat_Default"))
         {
             //Activate return button
-            UI.GetComponent<UpgradeUI_v2>().returnButton.SetActive(true);
-            UI.GetComponent<UpgradeUI_v2>().returnButton.transform.localPosition =
-    new Vector3(175, UI.GetComponent<UpgradeUI_v2>().returnButton.transform.localPosition.y,
-    UI.GetComponent<UpgradeUI_v2>().returnButton.transform.localPosition.z);
+            UI.GetComponent<UpgradeUI_v2>().returnBoat.SetActive(true);
 
             //Activate boat upgrade buttons
             UI.GetComponent<UpgradeUI_v2>().boatButtons.SetActive(true);
@@ -36,10 +33,7 @@ public class AnimationFinished : StateMachineBehaviour {
         {
 
             //Activate return button
-            UI.GetComponent<UpgradeUI_v2>().returnButton.SetActive(true);
-            UI.GetComponent<UpgradeUI_v2>().returnButton.transform.localPosition =
-                new Vector3(35, UI.GetComponent<UpgradeUI_v2>().returnButton.transform.localPosition.y,
-                UI.GetComponent<UpgradeUI_v2>().returnButton.transform.localPosition.z);
+            UI.GetComponent<UpgradeUI_v2>().returnTower.SetActive(true);
 
             //Activate highlighting
             UI.GetComponent<UpgradeUI_v2>().highlight.SetActive(true);

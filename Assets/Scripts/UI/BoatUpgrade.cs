@@ -37,16 +37,22 @@ public class BoatUpgrade : MonoBehaviour {
 
         if (var.healthLevel == 1)
         {
+            boat0.SetActive(false);
             boat1.SetActive(true);
         }
 
         if (var.healthLevel == 2)
         {
+            boat0.SetActive(false);
+            boat1.SetActive(false);
             boat2.SetActive(true);
         }
 
         if (var.healthLevel == 3)
         {
+            boat0.SetActive(false);
+            boat1.SetActive(false);
+            boat2.SetActive(false);
             boat3.SetActive(true);
         }
 

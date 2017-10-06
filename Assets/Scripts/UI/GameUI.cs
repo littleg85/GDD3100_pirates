@@ -31,7 +31,7 @@ public class GameUI : MonoBehaviour {
 
         if (gameObject.transform.name == "bootyText")
         {
-            gameObject.GetComponent<Text>().text = "$" + var.booty;
+            gameObject.GetComponent<Text>().text = "Booty:$" + var.booty;
         }
 
         //Game Over Screens
