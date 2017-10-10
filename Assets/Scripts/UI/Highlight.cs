@@ -57,7 +57,7 @@ public class Highlight : MonoBehaviour
         {
             rend.enabled = true;
             Color mouseOver = Color.green;
-            mouseOver.a = 0.1f;
+            //mouseOver.a = 0.1f;
             rend.material.color = mouseOver;
         }
     }
@@ -67,14 +67,14 @@ public class Highlight : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !selected)
         {
             Color mouseOver = Color.red;
-            mouseOver.a = 0.3f;
+            //mouseOver.a = 0.3f;
             rend.material.color = mouseOver;
             selected = true;
         }
         else if (Input.GetMouseButtonDown(0) && selected)
         {
             Color mouseOver = Color.green;
-            mouseOver.a = 0.1f;
+           // mouseOver.a = 0.1f;
             rend.material.color = mouseOver;
             upgrade.SetActive(false);
             selected = false;

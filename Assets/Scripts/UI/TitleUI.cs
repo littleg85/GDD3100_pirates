@@ -50,6 +50,11 @@ public class TitleUI : MonoBehaviour {
         SceneManager.LoadScene("Settings");
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void SetBooty(string newText)
     {
         int temp = int.Parse(newText);
