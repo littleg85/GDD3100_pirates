@@ -31,9 +31,16 @@ public class UpgradeUI_v2 : MonoBehaviour
         var = GameObject.Find("Variables").GetComponent<Variables>();
         //bootyAvail = GameObject.Find("BootyAvail").GetComponent<Text>();
 
-        //Show cursor
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        //Show cursor if no controller
+        if (GameObject.Find("Gamepad Controller").GetComponent<GamepadController>().xbox == 1)
+        {
+
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     void Start()
@@ -65,15 +72,19 @@ public class UpgradeUI_v2 : MonoBehaviour
             boatButtons.transform.GetChild(4).gameObject.GetComponent<Button>().interactable = false;
         }
 
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            EventSystem.current.SetSelectedGameObject(GameObject.Find("Return Button Boat"));
+        }
         //Don't let you get cannons at heal level 0
-        if (var.healthLevel < 1 && var.attackLevel == 1)
-        {
-            boatButtons.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
-        }
-        else if (var.attackLevel < 3)
-        {
-            boatButtons.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
-        }
+        //if (var.healthLevel < 1 && var.attackLevel == 1)
+        //{
+        //    boatButtons.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        //}
+        //else if (var.attackLevel < 3)
+        //{
+        //    boatButtons.transform.GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+        //}
     }
 
     public void OnStartGame()

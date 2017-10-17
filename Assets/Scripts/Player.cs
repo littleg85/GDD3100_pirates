@@ -157,19 +157,19 @@ public class Player : MonoBehaviour
         if (health > 0 && !capsize)
         {
             //Turn left
-            if (KeyBindingManager.GetKey(KeyAction.left))
+            if (KeyBindingManager.GetKey(KeyAction.left) || Input.GetAxis("Horizontal") < 0)
             {
                 transform.Rotate(-transform.up * tSpeed * Time.deltaTime);
             }
 
             //Turn right
-            if (KeyBindingManager.GetKey(KeyAction.right))
+            if (KeyBindingManager.GetKey(KeyAction.right) || Input.GetAxis("Horizontal") > 0)
             {
                 transform.Rotate(transform.up * tSpeed * Time.deltaTime);
             }
 
-            //If boat is flipped, reset game.
-            if (transform.rotation.eulerAngles.z >= 170f && transform.rotation.eulerAngles.z <= 190f)
+                //If boat is flipped, reset game.
+                if (transform.rotation.eulerAngles.z >= 170f && transform.rotation.eulerAngles.z <= 190f)
             {
                 capsize = true;
                 StartCoroutine(Capsize());
@@ -212,20 +212,20 @@ public class Player : MonoBehaviour
         if (health > 0 && !capsize)
         {
             //Movement
-            if (KeyBindingManager.GetKey(KeyAction.forward))
+            if (KeyBindingManager.GetKey(KeyAction.forward) || Input.GetAxis("Right Trigger") > 0)
             {
                 //rb.velocity += transform.forward * var.speed;
                 rb.AddForce(transform.forward * speed);
             }
 
-            if (KeyBindingManager.GetKey(KeyAction.backward))
+            if (KeyBindingManager.GetKey(KeyAction.backward) || Input.GetAxis("Left Trigger") > 0)
             {
                 //rb.velocity -= transform.forward * var.speed;
                 rb.AddForce(-transform.forward * speed);
             }
 
             //Projectiles
-            if (KeyBindingManager.GetKey(KeyAction.attack1) && Time.time > nextFire)
+            if (KeyBindingManager.GetKey(KeyAction.attack1) || Input.GetAxis("A Button") == 1 && Time.time > nextFire)
             {
                 //Rock
                 if (var.attackLevel == 0)

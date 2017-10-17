@@ -14,5 +14,9 @@ public class Credits : MonoBehaviour {
 
         transform.Translate(-Vector3.up * Input.GetAxis("Mouse ScrollWheel") * 20000f * Time.deltaTime);
 
+        if (GameObject.Find("Gamepad Controller").GetComponent<GamepadController>().xbox == 1)
+        {
+            transform.Translate(-Vector3.up * Input.GetAxis("Vertical") * 100f * Time.deltaTime);
+        }
 	}
 }

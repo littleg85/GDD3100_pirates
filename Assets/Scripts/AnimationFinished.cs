@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class AnimationFinished : StateMachineBehaviour {
 
@@ -23,10 +24,12 @@ public class AnimationFinished : StateMachineBehaviour {
         if(animator.GetCurrentAnimatorStateInfo(0).IsName("Path_Boat_Default"))
         {
             //Activate return button
-            UI.GetComponent<UpgradeUI_v2>().returnBoat.SetActive(true);
+            UI.GetComponent<UpgradeUI_v2>().returnBoat.SetActive(true);      
 
             //Activate boat upgrade buttons
             UI.GetComponent<UpgradeUI_v2>().boatButtons.SetActive(true);
+
+            EventSystem.current.SetSelectedGameObject(GameObject.Find("Return Button Boat"));
         }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Path_Towers_Default"))
@@ -37,6 +40,8 @@ public class AnimationFinished : StateMachineBehaviour {
 
             //Activate highlighting
             UI.GetComponent<UpgradeUI_v2>().highlight.SetActive(true);
+
+            EventSystem.current.SetSelectedGameObject(GameObject.Find("Return Button Tower"));
         }
 
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Path_Default"))
@@ -46,6 +51,7 @@ public class AnimationFinished : StateMachineBehaviour {
             UI.GetComponent<UpgradeUI_v2>().Menu.SetActive(true);
             UI.GetComponent<UpgradeUI_v2>().boatButton.SetActive(true);
             UI.GetComponent<UpgradeUI_v2>().towerButton.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(GameObject.Find("Boat Button"));
         }
     }
 
