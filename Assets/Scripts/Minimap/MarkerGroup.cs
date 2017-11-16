@@ -20,4 +20,14 @@ public class MarkerGroup : MonoBehaviour {
 
     private RectTransform _rectTransform;
 
+    //private void LateUpdate()
+    //{
+    //    foreach (Transform t in transform)
+    //    {
+
+    //        t.rotation = transform.parent.parent.transform.Find("MapBorder").transform.rotation;
+
+    //    }
+
+    //}
 }

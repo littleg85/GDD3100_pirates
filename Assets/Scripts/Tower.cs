@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
     public GameObject tower0;
     public GameObject tower1;
     public GameObject tower2;
+    private int shoot;
     private Variables var;
     private GameLogic logic;
     public GameObject closestEnemy;
@@ -39,6 +40,15 @@ public class Tower : MonoBehaviour
         //Set models
         if (gameObject.name == "NE")
         {
+            if (var.levelArray[0] == 0)
+            {
+                shoot = 0;
+            }
+            else
+            {
+                shoot = 1;
+            }
+
             if (var.levelArray[0] == 1)
             {
                 tower0.SetActive(true);
@@ -58,6 +68,15 @@ public class Tower : MonoBehaviour
 
         if (gameObject.name == "E")
         {
+            if (var.levelArray[1] == 0)
+            {
+                shoot = 0;
+            }
+            else
+            {
+                shoot = 1;
+            }
+
             if (var.levelArray[1] == 1)
             {
                 tower0.SetActive(true);
@@ -77,6 +96,15 @@ public class Tower : MonoBehaviour
 
         if (gameObject.name == "S")
         {
+            if (var.levelArray[2] == 0)
+            {
+                shoot = 0;
+            }
+            else
+            {
+                shoot = 1;
+            }
+
             if (var.levelArray[2] == 1)
             {
                 tower0.SetActive(true);
@@ -96,6 +124,15 @@ public class Tower : MonoBehaviour
 
         if (gameObject.name == "SW")
         {
+            if (var.levelArray[3] == 0)
+            {
+                shoot = 0;
+            }
+            else
+            {
+                shoot = 1;
+            }
+
             if (var.levelArray[3] == 1)
             {
                 tower0.SetActive(true);
@@ -115,6 +152,15 @@ public class Tower : MonoBehaviour
 
         if (gameObject.name == "NW")
         {
+            if (var.levelArray[4] == 0)
+            {
+                shoot = 0;
+            }
+            else
+            {
+                shoot = 1;
+            }
+
             if (var.levelArray[4] == 1)
             {
                 tower0.SetActive(true);
@@ -164,7 +210,7 @@ public class Tower : MonoBehaviour
             dist = Vector3.Distance(transform.position, closestEnemy.transform.position);
         }
 
-        if (dist <= range && Time.time > nextFire)
+        if (dist <= range && Time.time > nextFire && shoot == 1)
         {
             GameObject proj = Instantiate(projectile, projSpawn.transform.position, Quaternion.identity);
             proj.transform.SetParent(gameObject.transform);

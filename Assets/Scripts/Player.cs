@@ -154,6 +154,11 @@ public class Player : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
+        if (health < 0)
+        {
+            health = 0;
+        }
+
         if (health > 0 && !capsize)
         {
             //Turn left
@@ -225,7 +230,7 @@ public class Player : MonoBehaviour
             }
 
             //Projectiles
-            if (KeyBindingManager.GetKey(KeyAction.attack1) || Input.GetAxis("A Button") == 1 && Time.time > nextFire)
+            if ((KeyBindingManager.GetKey(KeyAction.attack1) || Input.GetAxis("A Button") == 1 ) && Time.time > nextFire)
             {
                 //Rock
                 if (var.attackLevel == 0)
@@ -311,7 +316,7 @@ public class Player : MonoBehaviour
                 nextFire = Time.time + fireRate;
             }
 
-            if (KeyBindingManager.GetKey(KeyAction.attack2) && Time.time > nextFire)
+            if ((KeyBindingManager.GetKey(KeyAction.attack2) || Input.GetAxis("B Button") == 1) && Time.time > nextFire)
             {
                 if (var.attackLevel == 3)
                 {

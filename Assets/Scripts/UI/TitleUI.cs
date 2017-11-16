@@ -45,14 +45,29 @@ public class TitleUI : MonoBehaviour {
         SceneManager.LoadScene("Title");
     }
 
-    public void Settings()
+    public void Controls()
     {
-        SceneManager.LoadScene("Settings");
+        SceneManager.LoadScene("Controls");
     }
 
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Manual()
+    {
+        SceneManager.LoadScene("Manual");
+    }
+
+    public void Story()
+    {
+        SceneManager.LoadScene("Story");
+    }
+
+    public void Quests()
+    {
+        //SceneManager.LoadScene("Quests");
     }
 
     public void SetBooty(string newText)

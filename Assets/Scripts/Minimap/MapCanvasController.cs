@@ -145,7 +145,7 @@ public class MapCanvasController : MonoBehaviour
 
     }
 
-	void Update () 
+	void LateUpdate () 
     {
         if (!playerTransform)
         {
@@ -161,6 +161,7 @@ public class MapCanvasController : MonoBehaviour
         {
             mapArrow.rotate(Quaternion.Euler(new Vector3(0, 0, -playerTransform.eulerAngles.y + 180)));
         }
+
     }
 
     #endregion

@@ -28,4 +28,11 @@ public class MapArrow : MonoBehaviour {
         ArrowRect.rotation = quat;
     }
 
+    //private void LateUpdate()
+    //{
+
+    //        transform.rotation = transform.parent.parent.transform.Find("MapBorder").transform.rotation;
+
+    //}
+
 }
