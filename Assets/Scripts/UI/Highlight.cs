@@ -91,6 +91,8 @@ public class Highlight : MonoBehaviour
 
     public void Upgrade()
     {
+        GameObject.Find("Quest Controller").GetComponent<QuestController>().quest4 = true;
+
         if (selected)
         {
             if (var.levelArray[myTower.GetComponent<TowerUpgrade>().index] == 0 && var.booty >= 3000)

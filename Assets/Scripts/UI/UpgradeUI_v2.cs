@@ -74,7 +74,7 @@ public class UpgradeUI_v2 : MonoBehaviour
 
         if (EventSystem.current.currentSelectedGameObject == null)
         {
-            EventSystem.current.SetSelectedGameObject(GameObject.Find("Return Button Boat"));
+            //EventSystem.current.SetSelectedGameObject(GameObject.Find("Return Button Boat"));
         }
         //Don't let you get cannons at heal level 0
         //if (var.healthLevel < 1 && var.attackLevel == 1)

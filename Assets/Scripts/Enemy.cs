@@ -262,6 +262,7 @@ public class Enemy : MonoBehaviour
                 }
 
                 Destroy(gameObject);
+                GameObject.Find("Quest Controller").GetComponent<QuestController>().quest1 = true;
             }
         }
     }

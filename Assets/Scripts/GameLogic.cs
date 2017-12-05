@@ -49,6 +49,11 @@ public class GameLogic : MonoBehaviour {
         {
             StartCoroutine(GameWin());
             gameWon = true;
+            //Check for quest 5
+            if (GameObject.Find("Player").GetComponent<Player>().playerAttacked == false)
+            {
+                GameObject.Find("Quest Controller").GetComponent<QuestController>().quest5 = true;
+            }
         }
     }
 

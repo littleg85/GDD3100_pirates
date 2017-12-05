@@ -67,7 +67,7 @@ public class TitleUI : MonoBehaviour {
 
     public void Quests()
     {
-        //SceneManager.LoadScene("Quests");
+        SceneManager.LoadScene("Quests");
     }
 
     public void SetBooty(string newText)

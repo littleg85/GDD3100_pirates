@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GamepadController : MonoBehaviour {
 
     public int xbox = 0;
     public int ps = 0;
+
+    private Vector2 JoystickCursor;
+    private float joyX = 0;
+    private float joyY = 0;
+    private bool canClick = true;
 
     private void Awake()
     {
@@ -35,11 +41,32 @@ public class GamepadController : MonoBehaviour {
             }
         }
 
+        JoystickCursor = new Vector2(Screen.width/2, Screen.height/2);
+    }
 
-        if (xbox == 1)
+    private void Update()
+    {
+        if (xbox == 1 && SceneManager.GetActiveScene().name != "Game")
         {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (Input.GetAxis("A Button") == 1 && canClick)
+            {
+                CursorControl.SimulateLeftClick();
+                canClick = false;
+                StartCoroutine(ClickDelay());
+            }
+
+            joyX += Input.GetAxis("Mouse X") * 500 * Time.deltaTime;
+            joyY += Input.GetAxis("Mouse Y") * 500 * Time.deltaTime;
+
+            JoystickCursor = new Vector2(joyX, joyY);
+
+            CursorControl.SetLocalCursorPos(JoystickCursor);
         }
+    }
+
+    IEnumerator ClickDelay()
+    {
+        yield return new WaitForSeconds(1.0f);
+        canClick = true;
     }
 }

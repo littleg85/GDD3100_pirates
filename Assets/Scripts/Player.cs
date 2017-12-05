@@ -44,6 +44,9 @@ public class Player : MonoBehaviour
     private bool deadMenPlayed = false;
     private bool winPlayed = false;
 
+    //Quests
+    public bool playerAttacked = false;
+
     // Use this for initialization
     void Start()
     {
@@ -109,7 +112,7 @@ public class Player : MonoBehaviour
             speed = 80000;
         }
 
-        //Attack SPeed
+        //Attack Speed
         if (var.aSpeedLevel == 0)
         {
             fireRate = 2f;
@@ -232,6 +235,8 @@ public class Player : MonoBehaviour
             //Projectiles
             if ((KeyBindingManager.GetKey(KeyAction.attack1) || Input.GetAxis("A Button") == 1 ) && Time.time > nextFire)
             {
+                playerAttacked = true;
+
                 //Rock
                 if (var.attackLevel == 0)
                 {
@@ -318,6 +323,8 @@ public class Player : MonoBehaviour
 
             if ((KeyBindingManager.GetKey(KeyAction.attack2) || Input.GetAxis("B Button") == 1) && Time.time > nextFire)
             {
+                playerAttacked = true;
+
                 if (var.attackLevel == 3)
                 {
                     GameObject bullet1 = Instantiate(bulletPrefab, GameObject.Find("playerGuns").transform.position, transform.rotation);
@@ -338,39 +345,6 @@ public class Player : MonoBehaviour
                     nextFire = Time.time + fireRate;
                 }
             }
-
-            //Controller Projectiles
-            //if (Input.GetAxis("DPad Horizontal") == 1 && Time.time > nextFire)
-            //{
-            //    GameObject rock = Instantiate(rockPrefab, new Vector3(transform.position.x + 1, transform.position.y + 4, transform.position.z + 1), transform.rotation);
-            //    Rigidbody rockrb = rock.GetComponent<Rigidbody>();
-            //    rockrb.AddForce(new Vector3(1, 2, 0) * 150f, ForceMode.Impulse);
-            //    nextFire = Time.time + fireRate;
-            //}
-
-            //if (Input.GetAxis("DPad Horizontal") == -1 && Time.time > nextFire)
-            //{
-            //    GameObject rock = Instantiate(rockPrefab, new Vector3(transform.position.x - 1, transform.position.y + 4, transform.position.z + 1), transform.rotation);
-            //    Rigidbody rockrb = rock.GetComponent<Rigidbody>();
-            //    rockrb.AddForce(new Vector3(-1, 2, 0) * 150f, ForceMode.Impulse);
-            //    nextFire = Time.time + fireRate;
-            //}
-
-            //if (Input.GetAxis("DPad Vertical") == 1 && Time.time > nextFire)
-            //{
-            //    GameObject rock = Instantiate(rockPrefab, new Vector3(transform.position.x, transform.position.y + 4, transform.position.z + 5), transform.rotation);
-            //    Rigidbody rockrb = rock.GetComponent<Rigidbody>();
-            //    rockrb.AddForce(new Vector3(0, 2, 1) * 150f, ForceMode.Impulse);
-            //    nextFire = Time.time + fireRate;
-            //}
-
-            //if (Input.GetAxis("DPad Vertical") == -1 && Time.time > nextFire)
-            //{
-            //    GameObject rock = Instantiate(rockPrefab, new Vector3(transform.position.x, transform.position.y + 4, transform.position.z - 3), transform.rotation);
-            //    Rigidbody rockrb = rock.GetComponent<Rigidbody>();
-            //    rockrb.AddForce(new Vector3(0, 2, -1) * 150f, ForceMode.Impulse);
-            //    nextFire = Time.time + fireRate;
-            //}
         }
     }
 

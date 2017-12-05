@@ -13,13 +13,8 @@ public class UISound : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     private AudioSource deny;
     private Button button;
 
-    private GamepadController contr;
-    private GameObject store;
-
     private void Start()
     {
-        contr = GameObject.Find("Gamepad Controller").GetComponent<GamepadController>();
-        store = EventSystem.current.currentSelectedGameObject;
 
         button = GetComponent<Button>();
         sounds = GameObject.Find("Sound Controller").GetComponents<AudioSource>();
@@ -43,17 +38,5 @@ public class UISound : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
         {
             deny.Play();
         }    
-    }
-
-    private void Update()
-    {
-        if (contr.xbox == 1)
-        {       
-            if (EventSystem.current.currentSelectedGameObject != store)
-            {
-                store = EventSystem.current.currentSelectedGameObject;
-                mouseover.Play();
-            }
-        }
     }
 }

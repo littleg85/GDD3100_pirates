@@ -771,7 +771,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quests
+  m_Text: Achievements
 --- !u!222 &642753045
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1227,7 +1227,7 @@ Canvas:
   m_GameObject: {fileID: 914559170}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 476155211}
   m_PlaneDistance: 1
   m_PixelPerfect: 0
@@ -1934,8 +1934,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: Play
+      - m_Target: {fileID: 572663803}
+        m_MethodName: Quests
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2074,7 +2074,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 488286, guid: af2652a630f9e464895d954b8ce854bd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 438
       objectReference: {fileID: 0}
     - target: {fileID: 488286, guid: af2652a630f9e464895d954b8ce854bd, type: 2}
       propertyPath: m_LocalPosition.y
